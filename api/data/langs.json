@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "label": "Shell"
+    },
+    {
+        "id": 2,
+        "label": "Dockerfile"
+    },
+    {
+        "id": 3,
+        "label": "HTML"
+    },
+    {
+        "id": 4,
+        "label": "CSS"
+    },
+    {
+        "id": 5,
+        "label": "JavaScript"
+    }
+]

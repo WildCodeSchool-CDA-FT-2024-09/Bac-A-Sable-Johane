@@ -1,0 +1,48 @@
+### Get all products 
+GET http://localhost:3001/api/repos
+
+### Get a product by id
+GET http://localhost:3001/api/repos/R_kgDOrfrhgLYjjRcWg
+
+### Add repo 
+POST http://localhost:3001/api/repos
+Content-Type: application/json
+
+{
+  "id": "R_kgDOrfrhgLYjjRcWg",
+  "isPrivate": 2,
+  "name": "Test",
+  "url": "https://github.com/JohaneDecamps/P3_Digital-Origins",
+  "langs" : [1,2]
+}
+
+### Delte repo 
+DELETE http://localhost:3001/api/repos/R_kgDOrfrLYjjRcWg
+Content-Type: application/json
+
+
+
+### Get all languages 
+GET http://localhost:3001/api/langs
+
+### Add lang 
+POST http://localhost:3001/api/langs
+Content-Type: application/json
+
+{
+  "id": 2 ,
+  "label": "CSS"
+}
+
+
+###Get all status 
+GET  http://localhost:3001/api/status
+
+### Add status 
+POST http://localhost:3001/api/status
+Content-Type: application/json
+
+{
+  "id": 2 ,
+  "label": "Public"
+}
