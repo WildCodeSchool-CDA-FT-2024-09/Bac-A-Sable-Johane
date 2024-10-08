@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     children : [
       {path: "/",
         element: <HomePage/>,
-        loader: () => fetch(`http://localhost:3001/api/langs`)
+        // loader: () => fetch(`http://localhost:3001/api/langs`)
       },
       {
         path: "/detail/:id",

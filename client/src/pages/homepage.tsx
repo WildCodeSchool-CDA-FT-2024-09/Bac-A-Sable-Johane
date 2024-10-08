@@ -3,7 +3,7 @@ import type {Repo} from "../types/RepoTypes.ts"
 import RepoCard from "../components/RepoCard.tsx"
 import connexion from "../services/connexion.ts"
 import { useEffect, useState } from "react"
-import { useLoaderData } from "react-router-dom"
+// import { useLoaderData } from "react-router-dom"
 
 export type Language = {
   id: number;
@@ -12,8 +12,8 @@ export type Language = {
 
 export default function HomePage (){
 
-const dataLangs = useLoaderData() as Language[]
-console.log("lang :", dataLangs)
+// const dataLangs = useLoaderData() as Language[]
+// console.log("lang :", dataLangs)
 
 const [repos, setRepos] = useState<Repo[]>([]);
 console.log("repos :", repos)
@@ -46,7 +46,7 @@ const handleFilterChange = (e:any) => {setFilter(e.target.value)}
         id="lang"
         name="lang"
         value={filter}
-        onChange={handleFilterChange}> 
+        onChange= {handleFilterChange}>
           <option value=""> Tous </option>
           <option value="CSS"> CSS</option>
           <option value="Dockerfile"> Dockerfile</option>
