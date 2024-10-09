@@ -33,6 +33,8 @@ import "reflect-metadata";
 import { buildSchema } from "type-graphql";
 
 import RepoResolver from "./repos/repo.resolver"
+import LangResolver from "./langs/lang.resolver";
+import StatusResolver from "./status/status.resolver";
 
 // import repos from "../data/repos.json";
 // import langs from "../data/langs.json";
@@ -83,7 +85,7 @@ import RepoResolver from "./repos/repo.resolver"
 (async () => {
   await dataSource.initialize();
   const schema = await buildSchema({
-    resolvers : [RepoResolver],
+    resolvers : [RepoResolver, LangResolver, StatusResolver],
 
 })
 
