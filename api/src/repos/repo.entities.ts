@@ -30,7 +30,7 @@ export class Repo extends BaseEntity{
     status: Status;
 
     @Field(() => [Lang])
-    @ManyToMany(() => Lang, (lang) => lang.repos)
+    @ManyToMany(() => Lang, (langs) => langs.repos)
     langs?:Lang[];
 }
 

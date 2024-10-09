@@ -1,66 +1,64 @@
 import type {Repo} from "../types/RepoTypes.ts"
 // import data from "../assets/data.json"
 import RepoCard from "../components/RepoCard.tsx"
-import connexion from "../services/connexion.ts"
-import { useEffect, useState } from "react"
+// import connexion from "../services/connexion.ts"
+// import { useEffect, useState } from "react"
 // import { useLoaderData } from "react-router-dom"
+import { useQuery, gql } from "@apollo/client";
 
-export type Language = {
-  id: number;
-  label:string;
+
+const GET_REPOS = gql `
+query Fullrepos {
+  fullrepos {
+    id 
+    name
+    url
+  }
 }
+`;
+
+
+
+
 
 export default function HomePage (){
 
+  const {loading, error, data } = useQuery(GET_REPOS);
+
+
+  if(loading) return <h1> Loading </h1> 
+  if (error) return <p> Error </p>
+
 // const dataLangs = useLoaderData() as Language[]
 // console.log("lang :", dataLangs)
-
-const [repos, setRepos] = useState<Repo[]>([]);
-console.log("repos :", repos)
-
-const [filter, setFilter] = useState<string>("")
-
-useEffect(() => {
-  const fetchRepos= async () => {
-    try {
-      const repos = await connexion.get<Repo[]>("/api/repos");
-      setRepos(repos.data)
-    } catch (error) {
-      console.error(error)
+// const [repos, setRepos] = useState<Repo[]>([]);
+// console.log("repos :", repos)
+// const [filter, setFilter] = useState<string>("")
+// useEffect(() => {
+//   const fetchRepos= async () => {
+//     try {
+//       const repos = await connexion.get<Repo[]>("/api/repos");
+//       setRepos(repos.data)
+//     } catch (error) {
+//       console.error(error)
   
-    }
-  }
-  fetchRepos()
-}, [])
+//     }
+//   }
+//   fetchRepos()
+// }, [])
 
-const repoFilter = filter ? repos.filter((r) => r.langs.some((l) => l.label === filter)) : repos ; 
+// const repoFilter = filter ? repos.filter((r) => r.langs.some((l) => l.label === filter)) : repos ; 
 
 
-const handleFilterChange = (e:any) => {setFilter(e.target.value)}
+// const handleFilterChange = (e:any) => {setFilter(e.target.value)}
 
     return (
         <> 
         <h1 > Mes repo github </h1>
-<label htmlFor=""> Filter </label>
-        <select 
-        id="lang"
-        name="lang"
-        value={filter}
-        onChange= {handleFilterChange}>
-          <option value=""> Tous </option>
-          <option value="CSS"> CSS</option>
-          <option value="Dockerfile"> Dockerfile</option>
-          <option value="HTML"> HTML</option>
-          <option value="Shell"> Shell</option>
-          <option value="JavaScript"> Javascript </option>
-          {/* {dataLangs.map((l) => (
-            <option value={l.id} key={l.id}> {l.label}</option>
-          ))} */}
-        </select>
- 
+      
         <section className="all-cards">
-  {repoFilter.map((repo: Repo)=> (
-    <RepoCard key={repo.id} id={repo.id} name={repo.name} url={repo.url} langs={repo.langs } status={repo.status}/>
+  {data.fullrepos.map((repo: Repo)=> (
+    <RepoCard key={repo.id} id={repo.id} name={repo.name} url={repo.url} status={repo.status} langs={repo.langs}/>
   ) )}
 
           {/* {repos.map((repo: Repo) => (

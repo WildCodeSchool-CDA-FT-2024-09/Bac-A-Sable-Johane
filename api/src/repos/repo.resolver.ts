@@ -15,6 +15,7 @@ class RepoInput implements Partial<Repo> {
     
     @Field() 
     isPrivate: number;
+    
 }
 
 @Resolver(Repo)
