@@ -1,16 +1,15 @@
+export interface Language  {
+    id:number;
+    label:string;
+}
+
 export interface Repo  {
     id: string;
     name: string;
     url: string;
-   langs: {
-    label: string
-   };
    status: {
     label: string;
-   }
-}
-
-export interface Language  {
-    id:number;
-    label:string;
+   };
+   langs: Language[];
+   isFavorite: boolean;
 }

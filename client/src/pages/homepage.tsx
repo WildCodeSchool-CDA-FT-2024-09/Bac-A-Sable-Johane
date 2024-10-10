@@ -13,6 +13,15 @@ query Fullrepos {
     id 
     name
     url
+    isFavorite
+    status {
+    id
+    label
+    }
+    langs {
+    id 
+    name 
+    }
   }
 }
 `;
@@ -54,11 +63,11 @@ export default function HomePage (){
 
     return (
         <> 
-        <h1 > Mes repo github </h1>
+        <h1 > Mes repo github  </h1>
       
         <section className="all-cards">
   {data.fullrepos.map((repo: Repo)=> (
-    <RepoCard key={repo.id} id={repo.id} name={repo.name} url={repo.url} status={repo.status} langs={repo.langs}/>
+    <RepoCard key={repo.id} id={repo.id} name={repo.name} url={repo.url} status={repo.status} langs={repo.langs} isFavorite={repo.isFavorite}/>
   ) )}
 
           {/* {repos.map((repo: Repo) => (

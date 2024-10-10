@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import {Entity, Column, PrimaryColumn, ManyToOne, BaseEntity, ManyToMany} from "typeorm";
-import { IsString, Min, Max} from "class-validator";
+import { IsString, Min, Max, IsBoolean} from "class-validator";
 import { Status } from "../status/status.entities";
 import { Lang } from "../langs/lang.entites";
 import { Field, ObjectType, ID } from "type-graphql";
@@ -22,6 +22,11 @@ export class Repo extends BaseEntity{
     @Column()
     @IsString()
     url: string;
+
+    @Field()
+    @Column({ default: ()=> false})
+    @IsBoolean()
+    isFavorite: boolean;
 
     @Field(() => Status)
     @ManyToOne(() => Status, (status) => status.id)
@@ -45,5 +50,6 @@ export class LightRepo extends BaseEntity{
     @Field()
     url : string;
 
-  
+    @Field()
+    isFavorite: boolean;
 }
