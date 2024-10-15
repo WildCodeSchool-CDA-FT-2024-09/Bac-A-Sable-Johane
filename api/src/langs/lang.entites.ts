@@ -14,6 +14,7 @@ id : number;
 @Column()
 label: string;
 
+@Field(() => [Repo])
 @ManyToMany(() => Repo, (repo) => repo.langs)
 @JoinTable()
 repos?:Repo[];

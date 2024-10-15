@@ -15,28 +15,35 @@ query Fullrepos {
     url
     isFavorite
     status {
-    id
     label
     }
     langs {
-    id 
-    name 
+    label 
     }
   }
 }
 `;
 
-
-
+// const GET_LANGS = gql `
+// query Fulllangs {
+//   fulllangs {
+//   id
+//   label
+//   }
+// }`
 
 
 export default function HomePage (){
 
-  const {loading, error, data } = useQuery(GET_REPOS);
+  const {loading, data} = useQuery(GET_REPOS);
+console.log(data)
 
+// const {loading : loadingLang, data: dataLang} = useQuery(GET_LANGS)
+// console.log("datalang:", dataLang)
+// console.log(loadingLang)
 
   if(loading) return <h1> Loading </h1> 
-  if (error) return <p> Error </p>
+
 
 // const dataLangs = useLoaderData() as Language[]
 // console.log("lang :", dataLangs)
@@ -65,6 +72,10 @@ export default function HomePage (){
         <> 
         <h1 > Mes repo github  </h1>
       
+{/* {dataLang.map(( lang: Language) => (
+  <button type="button"> {lang.label} </button>
+))} */}
+
         <section className="all-cards">
   {data.fullrepos.map((repo: Repo)=> (
     <RepoCard key={repo.id} id={repo.id} name={repo.name} url={repo.url} status={repo.status} langs={repo.langs} isFavorite={repo.isFavorite}/>

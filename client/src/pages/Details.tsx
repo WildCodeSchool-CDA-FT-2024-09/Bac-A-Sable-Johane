@@ -1,4 +1,4 @@
-//import { useLoaderData, useParams} from "react-router-dom";
+// import { useLoaderData, useParams} from "react-router-dom";
 // import { useEffect, useState } from "react";
 //import connexion from "../services/connexion"
 //import type { Repo } from "../types/RepoTypes";
@@ -23,13 +23,13 @@ export default function Detail() {
     //     fecthRepos()
     // }, [id,data]);
 
-     return (
-        <h1> bonjour </h1>
-// <>
-// <p> {id} </p> 
-// <h1>  {data.name}</h1>
+    return (
+      
+{/* <>
+<p> {id} </p> 
+<h1>  {data.name}</h1>
 
-//  </>
-//     // <div> Detail {id} </div>
-   )
+ </> */}
+    // <div> Detail {id} </div>
+    )
 }

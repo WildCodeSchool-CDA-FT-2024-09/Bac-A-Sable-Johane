@@ -1,7 +1,7 @@
 import express from "express";
 import {Response} from "express";
-import repoControllers from "./repos/repos.controllers"
-import langControllers from "./langs/langs.controllers"
+import repoControllers from "./repos/repos.controllers";
+import langControllers from "./langs/langs.controllers";
 import statusControllers from "./status/status.controllers"
 
 const router = express.Router();

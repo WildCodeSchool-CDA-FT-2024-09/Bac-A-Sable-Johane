@@ -54,6 +54,7 @@ export default class RepoResolver{
 
        await repo.save();
        console.log("repo", repo);
+       
        const myRepo = await Repo.findOneOrFail({
         where : {id : newRepo.id},
         relations : {

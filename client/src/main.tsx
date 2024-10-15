@@ -6,8 +6,8 @@ import App from './App.tsx'
 import './index.css'
 import HomePage from './pages/homepage.tsx'
 import Detail from './pages/Details.tsx'
-import { ApolloProvider } from '@apollo/client'
-import client from "./services/connexion.ts"
+import { ApolloProvider } from "@apollo/client";
+import client from "./services/connexion.ts";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +24,7 @@ const router = createBrowserRouter([
         //   const repo = await connexion.get(`/api/repos/${params.id}`);
         //   console.log("Loader", repo)
         //   return repo.data
+
         // }
       }
     ]

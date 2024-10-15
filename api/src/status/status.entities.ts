@@ -14,6 +14,7 @@ id : number;
 @Column()
 label: string;
 
+@Field(() => [Repo])
 @OneToMany (() => Repo,( repo) => repo.status)
 repos?:Repo[];
 }
