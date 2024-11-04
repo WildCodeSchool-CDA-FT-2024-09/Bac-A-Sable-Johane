@@ -4,25 +4,8 @@ import RepoCard from "../components/RepoCard.tsx"
 // import connexion from "../services/connexion.ts"
 // import { useEffect, useState } from "react"
 // import { useLoaderData } from "react-router-dom"
-import { useQuery, gql } from "@apollo/client";
+import {useFullreposQuery} from  "../generated/graphql-types.ts"
 
-
-const GET_REPOS = gql `
-query Fullrepos {
-  fullrepos {
-    id 
-    name
-    url
-    isFavorite
-    status {
-    label
-    }
-    langs {
-    label 
-    }
-  }
-}
-`;
 
 // const GET_LANGS = gql `
 // query Fulllangs {
@@ -35,7 +18,7 @@ query Fullrepos {
 
 export default function HomePage (){
 
-  const {loading, data} = useQuery(GET_REPOS);
+  const {loading, data} = useFullreposQuery();
 console.log(data)
 
 // const {loading : loadingLang, data: dataLang} = useQuery(GET_LANGS)

@@ -1,10 +1,11 @@
 // import express from "express";
 // import router from "./router";
-// import * as dotenv from "dotenv";
-// import cors from "cors";
-// dotenv.config();
 
-// const { API_URL } = process.env;
+import * as dotenv from "dotenv";
+// import cors from "cors";
+dotenv.config();
+
+const { PORT } = process.env;
 
 // const app = express();
 
@@ -16,8 +17,6 @@
 
 // app.use(express.json());
 
-
-
 // app.use('/api', router);
 
 // app.listen(API_URL , async () => {
@@ -25,14 +24,13 @@
 //   console.log(`Serveur is listenning on http://localhost:${API_URL }`);
 // });
 
-
 import { ApolloServer } from "@apollo/server"; // preserve-line
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { dataSource } from "./db/client";
 import "reflect-metadata";
 import { buildSchema } from "type-graphql";
 
-import RepoResolver from "./repos/repo.resolver"
+import RepoResolver from "./repos/repo.resolver";
 import LangResolver from "./langs/lang.resolver";
 import StatusResolver from "./status/status.resolver";
 
@@ -50,9 +48,9 @@ import StatusResolver from "./status/status.resolver";
 //     url: String
 //   }
 
-//   type Lang { 
+//   type Lang {
 //   id: String
-//   label: String 
+//   label: String
 //   }
 
 //   type Raw {
@@ -85,18 +83,17 @@ import StatusResolver from "./status/status.resolver";
 (async () => {
   await dataSource.initialize();
   const schema = await buildSchema({
-    resolvers : [RepoResolver, LangResolver, StatusResolver],
+    resolvers: [RepoResolver, LangResolver, StatusResolver],
+  });
 
-})
-
-const server = new ApolloServer({
-  // typeDefs,
-  // resolvers,
-  schema,
-});
+  const server = new ApolloServer({
+    // typeDefs,
+    // resolvers,
+    schema,
+  });
 
   const { url } = await startStandaloneServer(server, {
-    listen: { port: 3001 },
+    listen: { port: Number(parseInt(PORT || '4000', 10)) },
   });
 
   console.log(`🚀  Server ready at: ${url}`);

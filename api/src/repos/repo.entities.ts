@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import {Entity, Column, PrimaryColumn, ManyToOne, BaseEntity, ManyToMany} from "typeorm";
-import { IsString, Min, Max, IsBoolean} from "class-validator";
+import { IsString, Min, Max} from "class-validator";
 import { Status } from "../status/status.entities";
 import { Lang } from "../langs/lang.entites";
 import { Field, ObjectType, ID } from "type-graphql";
@@ -24,8 +24,7 @@ export class Repo extends BaseEntity{
     url: string;
 
     @Field()
-    @Column({ default: ()=> false})
-    @IsBoolean()
+    @Column({ default: false})
     isFavorite: boolean;
 
     @Field(() => Status)
